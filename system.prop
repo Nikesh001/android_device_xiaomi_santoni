@@ -59,6 +59,7 @@ persist.camera.imglib.cac3=2
 camera.lowpower.record.enable=1
 persist.camera.gyro.disable=0
 camera.hal1.packagelist=com.skype.raider,com.google.android.talk,com.whatsapp,com.google.android.GoogleCamera
+persist.vendor.qti.telephony.vt_cam_interface=1
 
 # CNE/DPM
 persist.cne.feature=1
