@@ -51,12 +51,9 @@
     <ctl name="TTY Mode" value="OFF" />
     <ctl name="HPHL Volume" value="9" />
     <ctl name="HPHR Volume" value="9" />
-    <ctl name="RX HPH Mode" value="NORMAL" />
-    <ctl name="COMP0 RX1" value="0" />
-    <ctl name="COMP0 RX2" value="0" />
     <ctl name="RX1 Digital Volume" value="84" />
     <ctl name="RX2 Digital Volume" value="84" />
-    <ctl name="RX3 Digital Volume" value="78" />
+    <ctl name="RX3 Digital Volume" value="84" />
     <ctl name="IIR1 INP1 Volume" value="84" />
     <ctl name="IIR1 INP2 Volume" value="84" />
     <ctl name="IIR1 INP3 Volume" value="84" />
@@ -83,14 +80,16 @@
     <ctl name="EAR_S" value="ZERO" />
     <ctl name="HPHL" value="ZERO" />
     <ctl name="HPHR" value="ZERO" />
+    <ctl name="Lineout_1 amp" value="DISABLE"/> 
+    <ctl name="headset amp" value="DISABLE"/>
+    <ctl name="SPK DAC Switch" value="0" />
     <ctl name="SPK" value="ZERO" />
-    <ctl name="LINE_OUT" value="ZERO" />
+    <ctl name="WSA Spk Switch" value="ZERO" />
     <ctl name="SpkrMono WSA_RDAC" value="ZERO" />
     <ctl name="SpkrMono BOOST Switch" value="1" />
     <ctl name="EAR PA Gain" value="POS_6_DB" />
     <ctl name="EAR PA Gain" value="POS_1P5_DB" />
     <ctl name="EAR PA Boost" value="ENABLE" />
-    <ctl name="Speaker Boost" value="DISABLE" />
     <ctl name="MI2S_RX Channels" value="One" />
     <ctl name="MI2S_TX Channels" value="One" />
     <ctl name="PRI_MI2S_RX_DL_HL Switch" value="0" />
@@ -443,22 +442,13 @@
         <ctl name="QUIN_MI2S_RX Audio Mixer MultiMedia7" value="1" />
     </path>
 
-    <path name="compress-offload-playback2 afe-proxy">
-        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia7" value="1" />
-    </path>
-
-    <path name="compress-offload-playback2 usb-headphones">
-        <path name="compress-offload-playback2 afe-proxy" />
-    </path>
-
     <path name="compress-offload-playback2 speaker-and-hdmi">
         <path name="compress-offload-playback2 hdmi" />
         <path name="compress-offload-playback2" />
     </path>
 
-    <path name="compress-offload-playback2 speaker-and-usb-headphones">
-        <path name="compress-offload-playback2 usb-headphones" />
-        <path name="compress-offload-playback2" />
+    <path name="compress-offload-playback2 afe-proxy">
+        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia7" value="1" />
     </path>
 
     <path name="compress-offload-playback transmission-fm">
@@ -986,7 +976,6 @@
     <path name="adc3">
         <ctl name="ADC3 Volume" value="6" />
         <ctl name="DEC1 MUX" value="ADC2" />
-	<ctl name="MI2S_TX Channels" value="One" />
         <ctl name="ADC2 MUX" value="INP3" />
     </path>
 
@@ -994,8 +983,12 @@
     </path>
 
     <path name="speaker">
-        <ctl name="RX3 MIX1 INP1" value="RX1" />
-        <ctl name="LINE_OUT" value="Switch" />
+        <ctl name="MI2S_RX Channels" value="One" />
+        <ctl name="RX2 MIX1 INP1" value="RX2" />
+        <ctl name="RDAC2 MUX" value="RX2" />
+        <ctl name="HPHR" value="Switch" />
+        <ctl name="Lineout_1 amp" value="ENABLE"/>
+
     </path>
 
     <path name="speaker-and-hdmi">
@@ -1004,9 +997,10 @@
     </path>
 
     <path name="wsa-speaker">
-        <ctl name="RX3 MIX1 INP1" value="RX1" />
-        <ctl name="RX3 Digital Volume" value="78" />
-        <ctl name="LINE_OUT" value="Switch" />
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="RDAC2 MUX" value="RX1" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="WSA Spk Switch" value="WSA" />
         <ctl name="SpkrMono WSA_RDAC" value="Switch" />
    </path>
 
@@ -1027,10 +1021,6 @@
         <path name="wsa-speaker" />
         <ctl name="PRI_MI2S_RX_VI_FB_MUX" value="SENARY_TX" />
         <ctl name="SpkrMono VISENSE Switch" value="1" />
-    </path>
-
-    <path name="voice-speaker-protected">
-        <path name="speaker-protected" />
     </path>
 
    <path name="speaker-mic">
@@ -1055,22 +1045,16 @@
         <ctl name="MI2S_RX Channels" value="Two" />
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RX2 MIX1 INP1" value="RX2" />
-        <ctl name="RX HPH Mode" value="HD2" />
-        <ctl name="COMP0 RX1" value="1" />
-        <ctl name="COMP0 RX2" value="1" />
         <ctl name="RDAC2 MUX" value="RX2" />
         <ctl name="HPHL" value="Switch" />
         <ctl name="HPHR" value="Switch" />
+        <ctl name="headset amp" value="ENABLE"/>
     </path>
 
     <path name="headset-mic">
         <path name="adc2" />
         <ctl name="ADC2 MUX" value="INP2" />
         <ctl name="IIR1 INP1 MUX" value="DEC1" />
-    </path>
-
-    <path name="sub-mic">
-        <path name="adc3" />
     </path>
 
     <path name="sidetone-iir">
@@ -1121,13 +1105,8 @@
 
     <path name="speaker-and-headphones">
         <path name="speaker" />
-        <ctl name="RX3 Digital Volume" value="84" />
         <path name="headphones" />
-    </path>
-
-    <path name="wsa-speaker-and-headphones">
-        <path name="wsa-speaker" />
-        <path name="headphones" />
+        <ctl name="Lineout_1 amp" value="DUALMODE"/>
     </path>
 
     <path name="usb-headphones">
@@ -1141,11 +1120,6 @@
 
     <path name="speaker-and-usb-headphones">
         <path name="speaker" />
-        <path name="usb-headphones" />
-    </path>
-
-    <path name="wsa-speaker-and-usb-headphones">
-        <path name="wsa-speaker" />
         <path name="usb-headphones" />
     </path>
 
@@ -1196,12 +1170,7 @@
     </path>
 
     <path name="voice-speaker-dmic-ef">
-		<ctl name="MI2S_TX Channels" value="Two" />
-		<ctl name="ADC3 Volume" value="6" />
-        <ctl name="DEC1 MUX" value="ADC2" />
-        <ctl name="ADC2 MUX" value="INP3" />
-        <ctl name="ADC1 Volume" value="6" />
-        <ctl name="DEC2 MUX" value="ADC1" />
+        <path name="dmic-endfire" />
     </path>
 
     <path name="voice-rec-dmic-ef">
@@ -1303,10 +1272,6 @@
 
     <path name="speaker-and-line">
           <path name="speaker-and-headphones" />
-    </path>
-
-    <path name="wsa-speaker-and-line">
-          <path name="wsa-speaker-and-headphones" />
     </path>
 
 </mixer>

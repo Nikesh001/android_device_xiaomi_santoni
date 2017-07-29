@@ -1,5 +1,5 @@
 #
-# system.prop for mido
+# system.prop for santoni
 #
 
 # Audio
@@ -76,7 +76,7 @@ debug.enable.sglscale=1
 debug.gralloc.enable_fb_ubwc=1
 ro.opengles.version=196610
 ro.qualcomm.cabl=0
-ro.sf.lcd_density=480
+ro.sf.lcd_density=300
 
 # DRM
 drm.service.enabled=true
@@ -91,9 +91,6 @@ persist.qfp=false
 
 # Fm
 ro.fm.transmitter=false
-
-# Frp
-ro.frp.pst=/dev/block/bootdevice/by-name/config
 
 # GPS
 persist.gps.qc_nlp_in_use=1
@@ -121,7 +118,6 @@ ro.vendor.at_library=libqti-at.so
 ro.vendor.extension_library=libqti-perfd-client.so
 ro.am.reschedule_service=true
 ro.sys.fw.dex2oat_thread_count=4
-
 
 # Netmgrd
 ro.use_data_netmgrd=true

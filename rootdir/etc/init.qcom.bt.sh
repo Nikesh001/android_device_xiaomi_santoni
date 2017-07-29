@@ -51,6 +51,12 @@ failed ()
   exit $2
 }
 
+program_bdaddr ()
+{
+  /system/bin/btnvtool -O
+  logi "Bluetooth Address programmed successfully"
+}
+
 #
 # enable bluetooth profiles dynamically
 #
@@ -172,7 +178,7 @@ config_bt ()
            setprop ro.bluetooth.hfp.ver 1.7
        fi
        ;;
-    "msmcobalt")
+    "msm8998")
        setprop ro.bluetooth.hfp.ver 1.6
        ;;
     *)
@@ -293,8 +299,9 @@ esac
 
 eval $(/system/bin/hci_qcomm_init -e $PWR_CLASS $LE_PWR_CLASS && echo "exit_code_hci_qcomm_init=0" || echo "exit_code_hci_qcomm_init=1")
 
+	#bug272479 ,fanhongen.wt, hide bt mac ,20170630
 case $exit_code_hci_qcomm_init in
-  0) logi "Bluetooth QSoC firmware download succeeded, $BTS_DEVICE $BTS_TYPE $BTS_BAUD $BTS_ADDRESS";;
+  0) logi "Bluetooth QSoC firmware download succeeded, $BTS_DEVICE $BTS_TYPE $BTS_BAUD";;
   *) failed "Bluetooth QSoC firmware download failed" $exit_code_hci_qcomm_init;
      case $STACK in
          "bluez")

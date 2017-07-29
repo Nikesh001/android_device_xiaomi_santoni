@@ -20,7 +20,7 @@ set -e
 INITIAL_COPYRIGHT_YEAR=2017
 
 # Required!
-DEVICE=mido
+DEVICE=santoni
 VENDOR=xiaomi
 
 # Load extractutils and do some sanity checks

@@ -107,8 +107,9 @@ baseband=`getprop ro.baseband`
 
 echo 1  > /sys/class/android_usb/f_mass_storage/lun/nofua
 usb_config=`getprop persist.sys.usb.config`
+debuggable=`getprop ro.debuggable`
 case "$usb_config" in
-    "" | "adb") #USB persist config not set, select default configuration
+    "" | "adb" | "none") #USB persist config not set, select default configuration
       case "$esoc_link" in
           "PCIe")
               setprop persist.sys.usb.config diag,diag_mdm,serial_cdev,rmnet_qti_ether,mass_storage,adb
@@ -140,17 +141,27 @@ case "$usb_config" in
 	              "msm8937")
 			    case "$soc_id" in
 				    "313" | "320")
-				       setprop persist.sys.usb.config diag,serial_smd,rmnet_ipa,adb
+				       #setprop persist.sys.usb.config diag,serial_smd,rmnet_ipa,adb
+                                       if [ -z "$debuggable" -o "$debuggable" = "1" ]; then
+                                           setprop persist.sys.usb.config mtp,adb
+                                       else
+                                           setprop persist.sys.usb.config mtp
+                                       fi
 				    ;;
 				    *)
-				       setprop persist.sys.usb.config diag,serial_smd,rmnet_qti_bam,adb
+				       #setprop persist.sys.usb.config diag,serial_smd,rmnet_qti_bam,adb
+                                       if [ -z "$debuggable" -o "$debuggable" = "1" ]; then
+                                           setprop persist.sys.usb.config mtp,adb
+                                       else
+                                           setprop persist.sys.usb.config mtp
+                                       fi
 				    ;;
 			    esac
 		      ;;
 	              "msm8952" | "msm8953")
-		          setprop persist.sys.usb.config mtp,adb
+		          setprop persist.sys.usb.config diag,serial_smd,rmnet_ipa,adb
 		      ;;
-	              "msmcobalt")
+	              "msm8998")
 		          setprop persist.sys.usb.config diag,serial_cdev,rmnet_gsi,adb
 		      ;;
 	              *)
@@ -171,10 +182,16 @@ esac
 case "$target" in
     "msm8996")
         setprop sys.usb.controller "6a00000.dwc3"
+        setprop sys.usb.rndis.func.name "rndis_bam"
 	;;
-    "msmcobalt")
+    "msm8998")
         setprop sys.usb.controller "a800000.dwc3"
+        setprop sys.usb.rndis.func.name "gsi"
 	;;
+    "msmfalcon")
+        setprop sys.usb.controller "a800000.dwc3"
+        setprop sys.usb.rndis.func.name "rndis_bam"
+        ;;
     *)
 	;;
 esac

@@ -17,7 +17,7 @@
 
 set -e
 
-DEVICE=mido
+DEVICE=santoni
 VENDOR=xiaomi
 
 # Load extractutils and do some sanity checks

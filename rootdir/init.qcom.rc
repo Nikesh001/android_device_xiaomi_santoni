@@ -178,8 +178,21 @@ on boot
     chown wifi wifi /sys/class/net/bond0/bonding/queue_id
 
     # Fingerprint
+        # Goodix Fingerprint
     chown system system /dev/goodix_fp
-    chmod 0644 /dev/goodix_fp
+    chmod 0644 /dev/goodix_fp        
+    
+    setprop persist.sys.fp.vendor none
+    start gx_fpd
+    
+    #weidong,add the fp sensor infomation,20161122,start
+    on property:persist.sys.fp.vendor=switchf
+	setprop ro.boot.fpsensor fpc
+
+    on property:persist.sys.fp.vendor=goodix
+	setprop ro.boot.fpsensor gdx
+	setprop goodix.fp.miui.analyse 1
+    #weidong,add the fp sensor infomation,20161122,end
 
     chown system system /sys/devices/soc/soc:fpc1020/compatible_all
     chmod 0664 /sys/devices/soc/soc:fpc1020/compatible_all
@@ -203,6 +216,10 @@ on boot
     chown system system /sys/class/leds/red/brightness
     chown system system /sys/class/leds/green/brightness
     chown system system /sys/class/leds/blue/brightness
+
+    # IR blaster
+    chown root system /sys/class/leds/infrared/transmit
+    chown root system /sys/class/leds/infrared/brightness  
 
     # Allow access to emmc rawdump block partition and dload sysfs node
     chown root system /dev/block/bootdevice/by-name/rawdump -p /dev/block/
@@ -1010,30 +1027,38 @@ service poweroffhandler /system/bin/poweroffhandler
 
 service fingerprintd /system/bin/fingerprintd
     class late_start
-    user system 
+    socket fpce stream 0666 system system
+    user  system
     group system sdcard_rw
     system system
     disabled
+
 
 service gx_fpd /system/bin/gx_fpd
      class core
      user root
      group system system
+     disabled
 
-on property:sys.fp.vendor=switchf
+service fingerprint_log /system/bin/fingerprint_log
+    class late_start
+    user system
+    group system sdcard_rw
+    disabled
+
+on property:persist.sys.fp.vendor=switchf
     stop gx_fpd
-    setprop sys.fp.vendor searchf
+    setprop persist.sys.fp.vendor searchf
     start fingerprintd
-    setprop fpc.fp.miui.token 0
-    setprop ro.boot.fpsensor fpc
-    setprop ro.hardware.fingerprint searchf
 
-on property:sys.fp.onstart=1
+on property:persist.sys.fp.onstart=1
    start fingerprintd
-   setprop goodix.fp.miui.analyse 1
-   setprop goodix.fp.miui.token 0
-   setprop ro.boot.fpsensor gdx
-   setprop ro.hardware.fingerprint goodix
+
+on property:persist.sys.wingtech.debug=1
+   start fingerprint_log
+
+on property:persist.sys.wingtech.debug=0
+   stop fingerprint_log
 
 service displayfeature /system/bin/displayfeature
     class main
