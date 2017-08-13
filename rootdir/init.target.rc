@@ -413,3 +413,4 @@ service vsimservice /system/bin/vsimd
 
 service mlipayservice /system/bin/mlipayd
     class late_start
+
