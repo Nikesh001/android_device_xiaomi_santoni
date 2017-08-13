@@ -237,6 +237,7 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.qcom.rc \
     init.qcom.sh \
+    init.qti.ims.sh \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
     init.target.rc \
