@@ -29,6 +29,8 @@ etc/drc/drc_cfg_AZ.txt
 etc/surround_sound_3mic/surround_sound_rec_5.1.cfg
 etc/surround_sound_3mic/surround_sound_rec_AZ.cfg
 lib/soundfx/libdirac.so
+lib/hw/audio.primary.msm8937.so
+lib64/hw/audio.primary.msm8937.so
 vendor/etc/diracmobile.config
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
@@ -805,6 +807,10 @@ vendor/lib64/libtzdrmgenprov.so
 
 # Fingerprint
 bin/gx_fpd
+lib/hw/fingerprint.default.so
+lib64/hw/fingerprint.default.so
+lib/hw/fingerprint.msm8937.so
+lib64/hw/fingerprint.msm8937.so
 lib/hw/fingerprint.searchf.so
 lib/libcom_fingerprints_service.so
 lib64/hw/fingerprint.goodix.so
@@ -965,7 +971,9 @@ etc/firmware/a530v3_gpmu.fw2
 etc/firmware/a530v3_seq.fw2
 
 # Ipacm
+-bin/ipacm
 bin/ipacm-diag
+etc/IPACM_cfg.xml
 
 # Keystore
 vendor/lib/hw/keystore.msm8953.so
@@ -1107,7 +1115,7 @@ etc/permissions/telephonyservice.xml
 framework/QtiTelephonyServicelibrary.jar
 framework/embmslibrary.jar
 -framework/qcrilhook.jar
-framework/qti-telephony-common.jar|37d692fb171d0ee3269676a9e9998d2e3bfd9488
+framework/qti-telephony-common.jar
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 vendor/bin/qti
 vendor/lib/liblqe.so
@@ -1199,3 +1207,4 @@ vendor/lib/mediadrm/libwvdrmengine.so|70419ce1f8eb6bd3aa36234f8d7e8003569efc9c
 bin/cnss-daemon
 bin/cnss_diag
 bin/wcnss_service
+-lib/modules/pronto/pronto_wlan.ko
