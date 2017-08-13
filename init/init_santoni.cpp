@@ -1,5 +1,6 @@
 /*
    Copyright (c) 2016, The CyanogenMod Project
+   Copyright (c) 2017, The Lineage Project
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
    met:
@@ -27,6 +28,9 @@
 
 #include <fcntl.h>
 #include <stdlib.h>
+#include <iostream>
+#include <string>
+#include <sstream>
 #include <sys/sysinfo.h>
 
 #include "vendor_init.h"
@@ -40,6 +44,21 @@ char const *heapsize;
 char const *heapminfree;
 char const *heapmaxfree;
 char const *large_cache_height;
+
+static std::string board_id;
+
+static void import_cmdline(const std::string& key,
+        const std::string& value, bool for_emulator __attribute__((unused)))
+{
+    if (key.empty()) return;
+
+    if (key == "board_id") {
+        std::istringstream iss(value);
+        std::string token;
+        std::getline(iss, token, ':');
+        board_id = token;
+    }
+}
 
 static void init_alarm_boot_properties()
 {
@@ -105,10 +124,41 @@ void check_device()
    }
 }
 
+void init_variant_properties()
+{
+    if (property_get("ro.cm.device") != "santoni")
+        return;
+
+    import_kernel_cmdline(0, import_cmdline);
+    
+    //set board
+    property_set("ro.product.wt.boardid", board_id.c_str());
+
+    //Variants
+    if (board_id == "S88536AA2") {
+        property_set("ro.build.display.wtid", "SW_S88536AA2_V028_M11_XM_A13N_USR_TEST");
+        property_set("ro.product.subproject", "S88536AA2"); 
+    } else if (board_id == "S88536BA2") {
+        property_set("ro.build.display.wtid", "SW_S88536BA2_V028_M11_XM_A13N_USR_TEST");
+        property_set("ro.product.subproject", "S88536BA2"); 
+    } else if (board_id == "S88536CA2") {
+        property_set("ro.build.display.wtid", "SW_S88536CA2_V028_M11_XM_A13N_USR_TEST");
+        property_set("ro.product.subproject", "S88536CA2"); 
+   }
+
+   if (board_id == "S88536CA2"){
+        property_set("ro.product.model", "Redmi 4");
+    } else {
+        property_set("ro.product.model", "Redmi 4x");
+    }
+
+}
+
 void vendor_load_properties()
 {
     init_alarm_boot_properties();
     check_device();
+    init_variant_properties()
 
     property_set("dalvik.vm.heapstartsize", heapstartsize);
     property_set("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
