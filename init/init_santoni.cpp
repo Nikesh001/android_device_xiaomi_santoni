@@ -158,7 +158,7 @@ void vendor_load_properties()
 {
     init_alarm_boot_properties();
     check_device();
-    init_variant_properties()
+    init_variant_properties();
 
     property_set("dalvik.vm.heapstartsize", heapstartsize);
     property_set("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
