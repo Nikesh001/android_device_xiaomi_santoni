@@ -34,7 +34,7 @@ fi
 . "$HELPER"
 
 if [ $# -eq 0 ]; then
-  SRC=adb
+  SRC=/media/server/data
 else
   if [ $# -eq 1 ]; then
     SRC=$1
