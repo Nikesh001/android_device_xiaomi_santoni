@@ -616,7 +616,7 @@ vendor/lib64/libFidoSuiJNI.so
 # Fingerprint
 bin/gx_fpd
 lib/hw/fingerprint.default.so
-hw/fingerprint.msm8937.so
+lib/hw/fingerprint.msm8937.so
 lib/libcom_fingerprints_service.so
 lib64//hw/fingerprint.default.so
 lib64//hw/fingerprint.fpc.so
