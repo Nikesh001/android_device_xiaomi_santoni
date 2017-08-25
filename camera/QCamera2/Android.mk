@@ -75,6 +75,8 @@ LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/../mm-image-codec/qomx_core \
         $(LOCAL_PATH)/include \
         $(LOCAL_PATH)/stack/common \
+        frameworks/native/include \
+        frameworks/native/include/media/openmax \
         $(LOCAL_PATH)/stack/mm-camera-interface/inc \
         $(LOCAL_PATH)/util \
         $(LOCAL_PATH)/HAL3 \
