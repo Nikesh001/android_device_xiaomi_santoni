@@ -179,3 +179,9 @@ ro.sys.fw.trim_enable_memory=2147483648
 
 # Wifi
 wifi.interface=wlan0
+
+# Create zram disk
+ro.config.zram=true
+
+# Create Swap disk, if below sys-prop enabled & also if device has lower (< 1 GB) RAM
+ro.config.swap=true
