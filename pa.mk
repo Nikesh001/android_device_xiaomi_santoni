@@ -16,10 +16,10 @@
 
 $(call inherit-product, device/xiaomi/santoni/full_santoni.mk)
 
-# Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit some common AOSPA stuff.
+$(call inherit-product, vendor/pa/config/common_full_phone.mk)
 
-PRODUCT_NAME := lineage_santoni
+PRODUCT_NAME := pa_santoni
 BOARD_VENDOR := Xiaomi
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
