@@ -120,6 +120,7 @@
             64 - Volume rocker
          For example, a device with Home, Back and Menu keys would set this
          config to 7. -->
+       <add-resource type="integer" name="config_deviceHardwareWakeKeys"></add-resource>
     <integer name="config_deviceHardwareWakeKeys">64</integer>
 
     <!-- Control the behavior when the user long presses the home button.
@@ -147,6 +148,7 @@
          This needs to match the constants in
          services/core/java/com/android/server/policy/PhoneWindowManager.java
     -->
+       <add-resource type="integer" name="config_longPressOnAppSwitchBehavior"></add-resource>
     <integer name="config_longPressOnAppSwitchBehavior">1</integer>
 
     <!-- Wifi driver supports batched scan -->
@@ -383,12 +385,15 @@
 
     <!-- Support in Surfaceflinger for blur layers.
          NOTE: This requires additional hardware-specific code. -->
+       <add-resource type="bool" name="config_uiBlurEnabled"></add-resource>
     <bool name="config_uiBlurEnabled">true</bool>
 
     <!-- Whether notify fingerprint client of successful cancelled authentication -->
+       <add-resource type="bool" name="config_notifyClientOnFingerprintCancelSuccess"></add-resource>
     <bool name="config_notifyClientOnFingerprintCancelSuccess">true</bool>
 
     <!-- Whether device supports double tap to wake -->
+       <add-resource type="bool" name="config_supportDoubleTapWake"></add-resource>
     <bool name="config_supportDoubleTapWake">true</bool>
 
 </resources>
