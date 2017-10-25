@@ -132,11 +132,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fingerprintd
 
-# FM
-PRODUCT_PACKAGES += \
-    FMRadio \
-    libfmjni
-
 # Fs_config
 PRODUCT_PACKAGES += \
     fs_config_files
