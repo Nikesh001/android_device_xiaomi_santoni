@@ -1,0 +1,1 @@
+allow healthd device:dir rw_dir_perms;

@@ -1,0 +1,2 @@
+allow healthd healthd:capability {dac_override dac_read_search};
+allow healthd device:dir read;
