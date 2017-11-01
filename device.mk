@@ -111,7 +111,7 @@ PRODUCT_COPY_FILES += \
 # Camera
 PRODUCT_PACKAGES += \
     libshim_camera \
-    Snap
+    ParanoidCamera
 
 # Offline Charger
 PRODUCT_PACKAGES += \
