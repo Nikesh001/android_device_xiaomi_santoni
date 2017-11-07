@@ -7,5 +7,11 @@ allow fingerprintd tee_device:chr_file rw_file_perms;
 allow fingerprintd uhid_device:chr_file rw_file_perms;
 allow fingerprintd fpc_data_file:dir rw_dir_perms;
 allow fingerprintd fpc_data_file:sock_file create_file_perms;
-set_prop(fingerprintd, system_prop)
-r_dir_file(fingerprintd, firmware_file)
+set_prop(fingerprintd, system_prop);
+allow fingerprintd sysfs:file write;
+allow fingerprintd storage_file:dir search;
+allow fingerprintd storage_file:lnk_file read;
+allow fingerprintd mnt_user_file:dir search;
+allow fingerprintd mnt_user_file:lnk_file read;
+allow fingerprintd fuse:dir search;
+allow fingerprintd fuse:file { getattr append open };

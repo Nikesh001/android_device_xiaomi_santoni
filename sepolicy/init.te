@@ -1,0 +1,7 @@
+allow init init:netlink_socket read;
+allow init tee_device:chr_file { write ioctl };
+allow init fingerprintd:binder call;
+allow init fingerprintd:netlink_socket read;
+allow init gx_fpd_device:chr_file { read ioctl };
+allow init logd:lnk_file read;
+allow init logd:dir getattr;
