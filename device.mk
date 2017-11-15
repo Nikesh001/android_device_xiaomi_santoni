@@ -113,6 +113,10 @@ PRODUCT_PACKAGES += \
     libshim_camera \
     Snap
 
+# Offline Charger
+PRODUCT_PACKAGES += \
+    charger_res_images
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8937 \
