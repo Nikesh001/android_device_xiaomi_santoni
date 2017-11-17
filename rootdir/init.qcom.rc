@@ -626,6 +626,8 @@ service qmuxd /system/bin/qmuxd
 
 service netmgrd /system/bin/netmgrd
     class main
+    user root
+    group radio readproc system wakelock
 
 service ipacm-diag /system/bin/ipacm-diag
     class main
