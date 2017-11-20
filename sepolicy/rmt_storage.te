@@ -1,2 +1,2 @@
-allow rmt_storage block_device:blk_file { read write open };
+#allow rmt_storage block_device:blk_file { read write open };
 allow rmt_storage self:capability dac_override;
