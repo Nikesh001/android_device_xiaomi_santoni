@@ -1224,7 +1224,6 @@ bin/cnss-daemon
 bin/cnss_diag
 bin/wcnss_service
 bin/fstman
-lib/modules/pronto/pronto_wlan.ko:lib/modules/wlan.ko
 
 # To-Do
 vendor/lib/libaudioparsers.so
