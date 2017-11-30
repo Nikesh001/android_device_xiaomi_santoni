@@ -1050,8 +1050,10 @@ service fingerprint_log /system/bin/fingerprint_log
 on property:persist.sys.fp.vendor=switchf
     stop gx_fpd
     setprop persist.sys.fp.vendor searchf
+    start fps_hal
 
 on property:persist.sys.fp.onstart=1
+   start fps_hal
 
 on property:persist.sys.wingtech.debug=1
    start fingerprint_log
