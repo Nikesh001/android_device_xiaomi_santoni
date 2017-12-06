@@ -396,6 +396,7 @@ vendor/lib64/libqmiservices.so
 vendor/lib64/libsmemlog.so
 
 # Radio
+-app/SimSettings/SimSettings.apk
 -app/QtiTelephonyService/QtiTelephonyService.apk
 etc/permissions/qcnvitems.xml
 etc/permissions/qcrilhook.xml
