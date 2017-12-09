@@ -45,7 +45,6 @@ vendor/lib/libhwdaphal.so
 vendor/lib/libmdsprpc.so
 vendor/lib/libqct_resampler.so
 vendor/lib/libsurround_3mic_proc.so
-lib/hw/audio.primary.msm8937.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
