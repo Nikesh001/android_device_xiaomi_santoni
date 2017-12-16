@@ -111,6 +111,15 @@ $(RFS_MSM_MPSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
 	$(hide) ln -sf /firmware $@/readonly/firmware
 
-ALL_DEFAULT_INSTALLED_MODULES += $(RFS_MSM_ADSP_SYMLINKS) $(RFS_MSM_MPSS_SYMLINKS)
+# Create a link for the WCNSS config file, which ends up as a writable
+# version in /data/misc/wifi
+WCNSS_CFG_SYMLINK := $(TARGET_OUT_VENDOR)/firmware/wlan/prima/WCNSS_qcom_cfg.ini
+$(WCNSS_CFG_SYMLINK): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating WCNSS config file link: $@"
+	@rm -rf $@
+	@mkdir -p $(TARGET_OUT_VENDOR)/firmware/wlan/prima
+	$(hide) ln -sf /data/misc/wifi/WCNSS_qcom_cfg.ini $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(RFS_MSM_ADSP_SYMLINKS) $(RFS_MSM_MPSS_SYMLINKS) $(WCNSS_CFG_SYMLINK)
 
 endif
