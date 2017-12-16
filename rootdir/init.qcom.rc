@@ -166,15 +166,6 @@ on boot
     
     setprop persist.sys.fp.vendor none
     start gx_fpd
-    
-    #weidong,add the fp sensor infomation,20161122,start
-    on property:persist.sys.fp.vendor=switchf
-	setprop ro.boot.fpsensor fpc
-
-    on property:persist.sys.fp.vendor=goodix
-	setprop ro.boot.fpsensor gdx
-	setprop goodix.fp.miui.analyse 1
-    #weidong,add the fp sensor infomation,20161122,end
 
     chown system system /sys/devices/soc/soc:fpc1020/compatible_all
     chmod 0664 /sys/devices/soc/soc:fpc1020/compatible_all
@@ -1050,9 +1041,13 @@ service fingerprint_log /system/bin/fingerprint_log
 on property:persist.sys.fp.vendor=switchf
     stop gx_fpd
     setprop persist.sys.fp.vendor searchf
+    setprop ro.boot.fpsensor fpc
+    setprop ro.hardware.fingerprint searchf
     start fps_hal
 
-on property:persist.sys.fp.onstart=1
+on property:persist.sys.fp.vendor=goodix
+   setprop ro.boot.fpsensor gdx
+   setprop ro.hardware.fingerprint goodix
    start fps_hal
 
 on property:persist.sys.wingtech.debug=1
