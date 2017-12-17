@@ -166,9 +166,6 @@ USE_DEVICE_SPECIFIC_GPS := true
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
-#Include path
-TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
-
 # HIDL
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 DEVICE_MATRIX_FILE   := $(DEVICE_PATH)/compatibility_matrix.xml
