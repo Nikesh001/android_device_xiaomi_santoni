@@ -929,7 +929,6 @@ case "$target" in
         esac
         # Set Memory parameters
         configure_memory_parameters
-        restorecon -R /sys/devices/system/cpu
     ;;
 esac
 
@@ -1317,7 +1316,6 @@ case "$target" in
         esac
         #Enable Memory Features
         enable_memory_features
-        restorecon -R /sys/devices/system/cpu
     ;;
 esac
 
@@ -2944,7 +2942,6 @@ case "$target" in
 
         # Set Memory parameters
         configure_memory_parameters
-        restorecon -R /sys/devices/system/cpu
 	;;
 esac
 
