@@ -34,9 +34,9 @@
 #include <sys/sysinfo.h>
 
 #include <android-base/properties.h>
+#include <android-base/logging.h>
 #include "vendor_init.h"
 #include "property_service.h"
-#include "log.h"
 #include "util.h"
 
 char const *heapstartsize;
@@ -45,23 +45,6 @@ char const *heapsize;
 char const *heapminfree;
 char const *heapmaxfree;
 char const *large_cache_height;
-
-using android::base::GetProperty;
-
-static std::string board_id;
-
-static void import_cmdline(const std::string& key,
-        const std::string& value, bool for_emulator __attribute__((unused)))
-{
-    if (key.empty()) return;
-
-    if (key == "board_id") {
-        std::istringstream iss(value);
-        std::string token;
-        std::getline(iss, token, ':');
-        board_id = token;
-    }
-}
 
 static void init_alarm_boot_properties()
 {
@@ -88,9 +71,9 @@ static void init_alarm_boot_properties()
      * 8 -> KPDPWR_N pin toggled (power key pressed)
      */
      if (boot_reason == 3) {
-        property_set("ro.alarm_boot", "true");
+        android::init::property_set("ro.alarm_boot", "true");
      } else {
-        property_set("ro.alarm_boot", "false");
+        android::init::property_set("ro.alarm_boot", "false");
      }
 }
 
@@ -127,58 +110,27 @@ void check_device()
    }
 }
 
-void init_variant_properties()
-{
-    if (GetProperty("ro.lineage.device", "") != "santoni")
-        return;
-
-    import_kernel_cmdline(0, import_cmdline);
-    
-    //set board
-    property_set("ro.product.wt.boardid", board_id.c_str());
-
-    //Variants
-    if (board_id == "S88536AA2") {
-        property_set("ro.build.display.wtid", "SW_S88536AA2_V028_M11_XM_A13N_USR_TEST");
-        property_set("ro.product.subproject", "S88536AA2"); 
-    } else if (board_id == "S88536BA2") {
-        property_set("ro.build.display.wtid", "SW_S88536BA2_V028_M11_XM_A13N_USR_TEST");
-        property_set("ro.product.subproject", "S88536BA2"); 
-    } else if (board_id == "S88536CA2") {
-        property_set("ro.build.display.wtid", "SW_S88536CA2_V028_M11_XM_A13N_USR_TEST");
-        property_set("ro.product.subproject", "S88536CA2"); 
-   }
-
-   if (board_id == "S88536CA2"){
-        property_set("ro.product.model", "Redmi 4");
-    } else {
-        property_set("ro.product.model", "Redmi 4x");
-    }
-
-}
-
 void vendor_load_properties()
 {
     init_alarm_boot_properties();
     check_device();
-    init_variant_properties();
 
-    property_set("dalvik.vm.heapstartsize", heapstartsize);
-    property_set("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
-    property_set("dalvik.vm.heapsize", heapsize);
-    property_set("dalvik.vm.heaptargetutilization", "0.75");
-    property_set("dalvik.vm.heapminfree", heapminfree);
-    property_set("dalvik.vm.heapmaxfree", heapmaxfree);
+    android::init::property_set("dalvik.vm.heapstartsize", heapstartsize);
+    android::init::property_set("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
+    android::init::property_set("dalvik.vm.heapsize", heapsize);
+    android::init::property_set("dalvik.vm.heaptargetutilization", "0.75");
+    android::init::property_set("dalvik.vm.heapminfree", heapminfree);
+    android::init::property_set("dalvik.vm.heapmaxfree", heapmaxfree);
 
-    property_set("ro.hwui.texture_cache_size", "72");
-    property_set("ro.hwui.layer_cache_size", "48");
-    property_set("ro.hwui.r_buffer_cache_size", "8");
-    property_set("ro.hwui.path_cache_size", "32");
-    property_set("ro.hwui.gradient_cache_size", "1");
-    property_set("ro.hwui.drop_shadow_cache_size", "6");
-    property_set("ro.hwui.texture_cache_flushrate", "0.4");
-    property_set("ro.hwui.text_small_cache_width", "1024");
-    property_set("ro.hwui.text_small_cache_height", "1024");
-    property_set("ro.hwui.text_large_cache_width", "2048");
-    property_set("ro.hwui.text_large_cache_height", large_cache_height);
+    android::init::property_set("ro.hwui.texture_cache_size", "72");
+    android::init::property_set("ro.hwui.layer_cache_size", "48");
+    android::init::property_set("ro.hwui.r_buffer_cache_size", "8");
+    android::init::property_set("ro.hwui.path_cache_size", "32");
+    android::init::property_set("ro.hwui.gradient_cache_size", "1");
+    android::init::property_set("ro.hwui.drop_shadow_cache_size", "6");
+    android::init::property_set("ro.hwui.texture_cache_flushrate", "0.4");
+    android::init::property_set("ro.hwui.text_small_cache_width", "1024");
+    android::init::property_set("ro.hwui.text_small_cache_height", "1024");
+    android::init::property_set("ro.hwui.text_large_cache_width", "2048");
+    android::init::property_set("ro.hwui.text_large_cache_height", large_cache_height);
 }
