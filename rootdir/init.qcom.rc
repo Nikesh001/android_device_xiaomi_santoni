@@ -125,7 +125,6 @@ on boot
     #Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
 
-
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
     #For bridgemgr daemon to inform the USB driver of the correct transport
@@ -177,10 +176,6 @@ on boot
     chown wifi wifi /sys/class/net/bond0/bonding/queue_id
 
     # Fingerprint
-        # Goodix Fingerprint
-    chown system system /dev/goodix_fp
-    chmod 0644 /dev/goodix_fp        
-    
     setprop persist.sys.fp.vendor none
     start gx_fpd
     
@@ -204,10 +199,6 @@ on boot
     chown system system /sys/devices/soc/soc:fpc1020/wakeup_enable
     chmod 0660 /sys/devices/soc/soc:fpc1020/wakeup_enable
 
-    # Glove Mode
-    chown system system /sys/class/tp_glove/device/glove_enable
-    chmod 0660 /sys/class/tp_glove/device/glove_enable
-
     # Notification LED
     chown system system /sys/class/leds/red/blink
     chown system system /sys/class/leds/green/blink
@@ -215,10 +206,6 @@ on boot
     chown system system /sys/class/leds/red/brightness
     chown system system /sys/class/leds/green/brightness
     chown system system /sys/class/leds/blue/brightness
-
-    # IR blaster
-    chown root system /sys/class/leds/infrared/transmit
-    chown root system /sys/class/leds/infrared/brightness  
 
     # Allow access to emmc rawdump block partition and dload sysfs node
     chown root system /dev/block/bootdevice/by-name/rawdump -p /dev/block/
@@ -402,7 +389,6 @@ on post-fs-data
     # set aggressive read ahead for dm-0 and dm-1 during boot up
     write /sys/block/dm-0/queue/read_ahead_kb 2048
     write /sys/block/dm-1/queue/read_ahead_kb 2048
-
 
     #WAPI
     mkdir /data/misc/wapi_certificate 0770 system wifi

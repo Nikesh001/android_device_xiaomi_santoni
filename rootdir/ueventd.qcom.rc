@@ -257,6 +257,7 @@
 /dev/ramdump*             0640   system     system
 
 # Fingerprint device
+/dev/goodix_fp              0664   system     system
 /dev/qbt1000              0660   system     system
 
 #ImproveTouch device
@@ -269,8 +270,12 @@
 /dev/block/platform/soc/624000.ufshc/by-name/frp        0600   system     system
 /dev/block/platform/soc/1da4000.ufshc/by-name/frp       0600   system     system
 
-/sys/devices/soc/soc:fpc1020		hw_reset			0220   system     system
+/sys/devices/soc/soc:fpc1020		hw_reset			0660   system     system
 /sys/devices/soc/soc:fpc1020		irq	        		0660   system     system
-/sys/devices/soc/soc:fpc1020      	wakeup_enable	        	0220   system     system
-/sys/devices/soc/soc:fpc1020      	compatible_all	        	0220   system     system
-/sys/devices/soc/soc:fpc1020            fingerdown_wait                 0220   system     system
+/sys/devices/soc/soc:fpc1020      	wakeup_enable	        	0660   system     system
+/sys/devices/soc/soc:fpc1020      	compatible_all	        	0660   system     system
+/sys/devices/soc/soc:fpc1020            fingerdown_wait                 0660   system     system
+
+# Consumer IR
+/sys/devices/soc/soc:gpio-leds/leds/infrared		brightness		0664   system     system
+/sys/devices/soc/soc:gpio-leds/leds/infrared		transmit		0664   system     system
