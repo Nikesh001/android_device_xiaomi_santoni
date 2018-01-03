@@ -423,10 +423,5 @@ etc/firmware/a530v3_gpmu.fw2
 etc/firmware/a530v3_seq.fw2
 etc/firmware/a540_gpmu.fw2
 
-# Wi-Fi
-bin/cnss-daemon
-bin/cnss_diag
-bin/wcnss_service
-bin/fstman
-
-
+# Wi-Fi - from tissot (Mi A1)
+vendor/bin/wcnss_service|828ff8b29fcc6a59644a7b9baf02f29eafe034a8
