@@ -440,8 +440,6 @@ vendor/etc/data/netmgr_config.xml
 vendor/lib/libmdmdetect.so
 vendor/lib/libqcmaputils.so
 vendor/lib/libril.so
-lib/android.hidl.manager@1.0.so
-lib64/android.hidl.manager@1.0.so
 vendor/lib/vendor.qti.hardware.radio.am@1.0_vendor.so
 vendor/lib/vendor.qti.hardware.radio.ims@1.0_vendor.so
 vendor/lib/vendor.qti.hardware.radio.lpa@1.0_vendor.so
