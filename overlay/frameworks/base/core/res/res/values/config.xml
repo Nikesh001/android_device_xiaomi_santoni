@@ -385,6 +385,9 @@
          NOTE: This requires additional hardware-specific code. -->
     <bool name="config_uiBlurEnabled">true</bool>
 
+    <!-- Enable Night display, which requires HWC 2.0. -->
+    <bool name="config_nightDisplayAvailable">true</bool>
+
     <!-- Whether notify fingerprint client of successful cancelled authentication -->
     <bool name="config_notifyClientOnFingerprintCancelSuccess">true</bool>
 
