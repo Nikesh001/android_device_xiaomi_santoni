@@ -204,6 +204,7 @@ PRODUCT_PACKAGES += \
     libgnsspps
 
 PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl \
     android.hardware.gnss@1.0-impl-qti \
     android.hardware.gnss@1.0-service-qti
 
