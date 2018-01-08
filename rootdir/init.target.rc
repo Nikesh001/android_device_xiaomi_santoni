@@ -187,7 +187,7 @@ service ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
    writepid /dev/cpuset/system-background/tasks
    disabled
 
-service imsrcsservice /system/vendor/bin/imsrcsd
+service vendor.imsrcsservice /system/vendor/bin/imsrcsd
    class main
    user system
    group radio diag inet log
@@ -196,7 +196,7 @@ service imsrcsservice /system/vendor/bin/imsrcsd
 
 on property:vendor.ims.DATA_DAEMON_STATUS=1
    start ims_rtp_daemon
-   start imsrcsservice
+   start vendor.imsrcsservice
 
 service hbtp /system/vendor/bin/hbtp_daemon
     class main
