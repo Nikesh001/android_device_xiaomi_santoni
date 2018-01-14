@@ -821,6 +821,11 @@ service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
     disabled
     oneshot
 
+service baseband-sh /vendor/bin/init.baseband.sh
+    class late_start
+    user root
+    oneshot
+
 on property:sys.boot_completed=1
     start qcom-post-boot
 

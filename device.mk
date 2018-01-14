@@ -315,14 +315,13 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.qcom.rc \
     init.qcom.sh \
-    init.qti.ims.sh \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
     init.target.rc \
     ueventd.qcom.rc
 
 PRODUCT_PACKAGES += \
-    init.qcom.bt.sh \
+    init.baseband.sh \
     init.qcom.post_boot.sh
 
 # RenderScript HAL
