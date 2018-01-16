@@ -70,6 +70,10 @@ PRODUCT_PACKAGES += \
     com.dsi.ant.antradio_library \
     libantradio
 
+# Offline Charger
+PRODUCT_PACKAGES += \
+    charger_res_images
+
 # Audio
 PRODUCT_PACKAGES += \
     audiod \
