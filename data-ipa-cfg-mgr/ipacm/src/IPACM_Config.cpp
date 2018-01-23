@@ -88,6 +88,8 @@ const char *ipacm_event_name[] = {
 	__stringify(IPA_WAN_XLAT_CONNECT_EVENT),               /* ipacm_event_data_fid */
 	__stringify(IPA_TETHERING_STATS_UPDATE_EVENT),         /* ipacm_event_data_fid */
 	__stringify(IPA_NETWORK_STATS_UPDATE_EVENT),           /* ipacm_event_data_fid */
+	__stringify(IPA_DOWNSTREAM_ADD),                       /* ipacm_event_ipahal_stream */
+	__stringify(IPA_DOWNSTREAM_DEL),                       /* ipacm_event_ipahal_stream */
 	__stringify(IPA_EXTERNAL_EVENT_MAX),
 	__stringify(IPA_HANDLE_WAN_UP),                        /* ipacm_event_iface_up  */
 	__stringify(IPA_HANDLE_WAN_DOWN),                      /* ipacm_event_iface_up  */
@@ -105,12 +107,14 @@ const char *ipacm_event_name[] = {
 	__stringify(IPA_ETH_BRIDGE_CLIENT_DEL),                /* ipacm_event_eth_bridge*/
 	__stringify(IPA_ETH_BRIDGE_WLAN_SCC_MCC_SWITCH),       /* ipacm_event_eth_bridge*/
 	__stringify(IPA_LAN_DELETE_SELF),                      /* ipacm_event_data_fid */
+#ifdef FEATURE_L2TP
 	__stringify(IPA_ADD_VLAN_IFACE),                       /* ipa_ioc_vlan_iface_info */
 	__stringify(IPA_DEL_VLAN_IFACE),                       /* ipa_ioc_vlan_iface_info */
 	__stringify(IPA_ADD_L2TP_VLAN_MAPPING),                /* ipa_ioc_l2tp_vlan_mapping_info */
 	__stringify(IPA_DEL_L2TP_VLAN_MAPPING),                /* ipa_ioc_l2tp_vlan_mapping_info */
 	__stringify(IPA_VLAN_CLIENT_INFO),                     /* ipacm_event_data_all */
 	__stringify(IPA_VLAN_IFACE_INFO),                      /* ipacm_event_data_all */
+#endif
 	__stringify(IPACM_EVENT_MAX),
 };
 
@@ -179,8 +183,11 @@ int IPACM_Config::Init(void)
 	{
 		IPACMERR("Failed opening %s.\n", DEVICE_NAME);
 	}
-	strncpy(IPACM_config_file, "/etc/IPACM_cfg.xml", sizeof(IPACM_config_file));
-
+#ifdef FEATURE_IPACM_HAL
+	strlcpy(IPACM_config_file, "/vendor/etc/IPACM_cfg.xml", sizeof(IPACM_config_file));
+#else
+	strlcpy(IPACM_config_file, "/etc/IPACM_cfg.xml", sizeof(IPACM_config_file));
+#endif
 	IPACMDBG_H("\n IPACM XML file is %s \n", IPACM_config_file);
 	if (IPACM_SUCCESS == ipacm_read_cfg_xml(IPACM_config_file, cfg))
 	{
@@ -212,7 +219,7 @@ int IPACM_Config::Init(void)
 
 	for (i = 0; i < cfg->iface_config.num_iface_entries; i++)
 	{
-		strncpy(iface_table[i].iface_name, cfg->iface_config.iface_entries[i].iface_name, sizeof(iface_table[i].iface_name));
+		strlcpy(iface_table[i].iface_name, cfg->iface_config.iface_entries[i].iface_name, sizeof(iface_table[i].iface_name));
 		iface_table[i].if_cat = cfg->iface_config.iface_entries[i].if_cat;
 		iface_table[i].if_mode = cfg->iface_config.iface_entries[i].if_mode;
 		iface_table[i].wlan_mode = cfg->iface_config.iface_entries[i].wlan_mode;
@@ -312,28 +319,28 @@ int IPACM_Config::Init(void)
 
 	/* Construct the routing table ictol name in iface static member*/
 	rt_tbl_default_v4.ip = IPA_IP_v4;
-	strncpy(rt_tbl_default_v4.name, V4_DEFAULT_ROUTE_TABLE_NAME, sizeof(rt_tbl_default_v4.name));
+	strlcpy(rt_tbl_default_v4.name, V4_DEFAULT_ROUTE_TABLE_NAME, sizeof(rt_tbl_default_v4.name));
 
 	rt_tbl_lan_v4.ip = IPA_IP_v4;
-	strncpy(rt_tbl_lan_v4.name, V4_LAN_ROUTE_TABLE_NAME, sizeof(rt_tbl_lan_v4.name));
+	strlcpy(rt_tbl_lan_v4.name, V4_LAN_ROUTE_TABLE_NAME, sizeof(rt_tbl_lan_v4.name));
 
 	rt_tbl_wan_v4.ip = IPA_IP_v4;
-	strncpy(rt_tbl_wan_v4.name, V4_WAN_ROUTE_TABLE_NAME, sizeof(rt_tbl_wan_v4.name));
+	strlcpy(rt_tbl_wan_v4.name, V4_WAN_ROUTE_TABLE_NAME, sizeof(rt_tbl_wan_v4.name));
 
 	rt_tbl_v6.ip = IPA_IP_v6;
-	strncpy(rt_tbl_v6.name, V6_COMMON_ROUTE_TABLE_NAME, sizeof(rt_tbl_v6.name));
+	strlcpy(rt_tbl_v6.name, V6_COMMON_ROUTE_TABLE_NAME, sizeof(rt_tbl_v6.name));
 
 	rt_tbl_wan_v6.ip = IPA_IP_v6;
-	strncpy(rt_tbl_wan_v6.name, V6_WAN_ROUTE_TABLE_NAME, sizeof(rt_tbl_wan_v6.name));
+	strlcpy(rt_tbl_wan_v6.name, V6_WAN_ROUTE_TABLE_NAME, sizeof(rt_tbl_wan_v6.name));
 
 	rt_tbl_odu_v4.ip = IPA_IP_v4;
-	strncpy(rt_tbl_odu_v4.name, V4_ODU_ROUTE_TABLE_NAME, sizeof(rt_tbl_odu_v4.name));
+	strlcpy(rt_tbl_odu_v4.name, V4_ODU_ROUTE_TABLE_NAME, sizeof(rt_tbl_odu_v4.name));
 
 	rt_tbl_odu_v6.ip = IPA_IP_v6;
-	strncpy(rt_tbl_odu_v6.name, V6_ODU_ROUTE_TABLE_NAME, sizeof(rt_tbl_odu_v6.name));
+	strlcpy(rt_tbl_odu_v6.name, V6_ODU_ROUTE_TABLE_NAME, sizeof(rt_tbl_odu_v6.name));
 
 	rt_tbl_wan_dl.ip = IPA_IP_MAX;
-	strncpy(rt_tbl_wan_dl.name, WAN_DL_ROUTE_TABLE_NAME, sizeof(rt_tbl_wan_dl.name));
+	strlcpy(rt_tbl_wan_dl.name, WAN_DL_ROUTE_TABLE_NAME, sizeof(rt_tbl_wan_dl.name));
 
 	/* Construct IPACM ipa_client map to rm_resource table */
 	ipa_client_rm_map_tbl[IPA_CLIENT_WLAN1_PROD]= IPA_RM_RESOURCE_WLAN_PROD;
@@ -501,7 +508,7 @@ int IPACM_Config::DelNatIfaces(char *dev_name)
 	{
 		if (strcmp(dev_name, pNatIfaces[i].iface_name) == 0)
 		{
-			IPACMDBG_H("Find Nat IfaceName: %s ,previous nat-ifaces number: %d\n",
+			IPACMDBG_H("Found Nat IfaceName: %s with nat-ifaces number: %d\n",
 							 pNatIfaces[i].iface_name, ipa_nat_iface_entries);
 
 			/* Reset the matched entry */
@@ -524,6 +531,26 @@ int IPACM_Config::DelNatIfaces(char *dev_name)
 	IPACMDBG_H("Can't find Nat IfaceName: %s with total nat-ifaces number: %d\n",
 					    dev_name, ipa_nat_iface_entries);
 	return 0;
+}
+
+int IPACM_Config::CheckNatIfaces(const char *dev_name)
+{
+	int i = 0;
+	IPACMDBG_H("Check iface %s from NAT-ifaces, currently it has %d nat ifaces\n",
+					 dev_name, ipa_nat_iface_entries);
+
+	for (i = 0; i < ipa_nat_iface_entries; i++)
+	{
+		if (strcmp(dev_name, pNatIfaces[i].iface_name) == 0)
+		{
+			IPACMDBG_H("Find Nat IfaceName: %s ,previous nat-ifaces number: %d\n",
+							 pNatIfaces[i].iface_name, ipa_nat_iface_entries);
+			return 0;
+		}
+	}
+	IPACMDBG_H("Can't find Nat IfaceName: %s with total nat-ifaces number: %d\n",
+					    dev_name, ipa_nat_iface_entries);
+	return -1;
 }
 
 /* for IPACM resource manager dependency usage
