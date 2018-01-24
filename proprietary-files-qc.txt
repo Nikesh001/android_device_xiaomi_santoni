@@ -132,6 +132,7 @@ vendor/lib64/libxml.so
 vendor/bin/hvdcp_opti
 
 # DPM - from tissot (Mi A1)
+bin/dpmd
 etc/dpm/dpm.conf
 etc/dpm/nsrm/NsrmConfiguration.xml
 etc/init/dpmd.rc
