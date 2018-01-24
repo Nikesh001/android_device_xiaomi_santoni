@@ -1,6 +1,4 @@
 # Audio
-lib/libDiracAPI_SHARED.so
-lib/soundfx/libdirac.so
 vendor/lib/libhwdaphal.so
 vendor/lib64/libhwdaphal.so
 
@@ -593,4 +591,3 @@ etc/firmware/a540_gpmu.fw2
 
 # Wi-Fi - from tissot (Mi A1)
 vendor/bin/wcnss_service|828ff8b29fcc6a59644a7b9baf02f29eafe034a8
-

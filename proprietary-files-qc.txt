@@ -59,6 +59,13 @@ vendor/lib64/soundfx/libqcreverb.so
 vendor/lib64/soundfx/libqcvirt.so
 vendor/lib64/soundfx/libshoebox.so
 
+# Audio (Dirac) - from sagit - OPR1.170623.027
+lib/soundfx/libdirac.so
+vendor/lib/rfsa/adsp/dirac_resource.dar
+vendor/lib/rfsa/adsp/dirac_resource.so
+vendor/lib/rfsa/adsp/libdirac-appi.so
+vendor/lib/rfsa/adsp/libdirac-capiv2.so
+
 # Bluetooth - from tissot (Mi A1)
 -lib/com.qualcomm.qti.bluetooth_audio@1.0.so
 -lib64/com.qualcomm.qti.bluetooth_audio@1.0.so
