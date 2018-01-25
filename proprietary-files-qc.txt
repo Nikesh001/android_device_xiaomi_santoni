@@ -69,7 +69,6 @@ vendor/lib/rfsa/adsp/libdirac-capiv2.so
 # Bluetooth - from tissot (Mi A1)
 -lib/com.qualcomm.qti.bluetooth_audio@1.0.so
 -lib64/com.qualcomm.qti.bluetooth_audio@1.0.so
-vendor/bin/btnvtool
 vendor/bin/hci_qcomm_init
 vendor/bin/wcnss_filter
 vendor/lib/com.qualcomm.qti.bluetooth_audio@1.0_vendor.so
