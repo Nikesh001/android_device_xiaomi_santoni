@@ -319,6 +319,10 @@ vendor/lib64/hw/sound_trigger.primary.msm8953.so:vendor/lib64/hw/sound_trigger.p
 vendor/lib64/vendor.qti.voiceprint@1.0.so
 
 # Media
+lib/libOmxSwVdec.so
+lib/libOmxSwVencMpeg4.so
+lib/libOmxVpp.so
+lib64/libOmxVpp.so
 vendor/lib/libI420colorconvert.so
 vendor/lib/libOmxAacDec.so
 vendor/lib/libOmxAlacDec.so
@@ -334,6 +338,7 @@ vendor/lib/libOmxVpp.so
 vendor/lib/libOmxWmaDec.so
 -vendor/lib/libgpustats.so
 vendor/lib/libmm-color-convertor.so
+vendor/lib/libMpeg4SwEncoder.so
 vendor/lib/libvpplibrary.so
 vendor/lib/libvqzip.so
 vendor/lib64/libI420colorconvert.so
@@ -350,6 +355,7 @@ vendor/lib64/libOmxVpp.so
 vendor/lib64/libOmxWmaDec.so
 -vendor/lib64/libgpustats.so
 vendor/lib64/libmm-color-convertor.so
+vendor/lib64/libMpeg4SwEncoder.so
 vendor/lib64/libvpplibrary.so
 
 # Modem
