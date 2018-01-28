@@ -59,7 +59,8 @@ vendor/lib64/soundfx/libqcreverb.so
 vendor/lib64/soundfx/libqcvirt.so
 vendor/lib64/soundfx/libshoebox.so
 
-# Bluetooth
+# aptX blobs - from oneplus3
+# Bluetooth - from tissot (Mi A1)
 -lib/com.qualcomm.qti.bluetooth_audio@1.0.so
 -lib64/com.qualcomm.qti.bluetooth_audio@1.0.so
 vendor/bin/btnvtool
@@ -68,6 +69,8 @@ vendor/bin/wcnss_filter
 vendor/lib/com.qualcomm.qti.bluetooth_audio@1.0_vendor.so
 vendor/lib/libbtnv.so
 vendor/lib64/com.qualcomm.qti.bluetooth_audio@1.0_vendor.so
+vendor/lib64/libaptX_encoder.so|0cebad28afcf29f931bdc2d24fce2730dc882ecf
+vendor/lib64/libaptXHD_encoder.so|90f47f10af28b3ead143200cb4370b847c513127
 vendor/lib64/libbtnv.so
 
 # CNE
