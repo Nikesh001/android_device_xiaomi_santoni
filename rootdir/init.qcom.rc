@@ -533,7 +533,7 @@ service cnd /system/vendor/bin/cnd
 service dpmQmiMgr /system/vendor/bin/dpmQmiMgr
     class main
     user system
-    group system
+    group radio system
     writepid /dev/cpuset/system-background/tasks
 
 service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
