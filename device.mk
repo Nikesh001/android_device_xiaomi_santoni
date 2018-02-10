@@ -349,7 +349,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     librmnetctl \
     libxml2 \
-    libprotobuf-cpp-full
+    libprotobuf-cpp-full \
+    libqdMetaData.system
 
 # Telephony
 PRODUCT_PACKAGES += \
