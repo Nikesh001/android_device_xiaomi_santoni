@@ -221,12 +221,6 @@ on property:init.svc.zygote=running
 
 on property:init.svc.zygote=restarting
     stop ppd
-
-service energy-awareness /system/vendor/bin/energy-awareness
-    class main
-    user root
-    group system
-    oneshot
 	
 service hvdcp_opti /system/vendor/bin/hvdcp_opti
     class main
