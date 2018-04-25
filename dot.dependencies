@@ -1,0 +1,10 @@
+[
+ {
+   "repository": "proprietary_vendor_xiaomi_santoni",
+   "target_path": "vendor/xiaomi"
+ },
+ {
+   "repository": "android_kernel_xiaomi_santoni",
+   "target_path": "kernel/xiaomi/msm8937"
+ }
+]
