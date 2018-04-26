@@ -129,6 +129,10 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:system/vendor/etc/sound_trigger_platform_info.xml \
 	$(LOCAL_PATH)/audio/usb_audio_policy_configuration.xml:system/vendor/etc/usb_audio_policy_configuration.xml
 
+# Additional native libraries
+PRODUCT_COPY_FILES += \
+        $(LOCAL_PATH)/configs/public.libraries.txt:system/vendor/etc/public.libraries.txt
+
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0 \
