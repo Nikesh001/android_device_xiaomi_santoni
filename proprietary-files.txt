@@ -393,16 +393,16 @@ etc/qdcm_calib_data_ili9881c_HD720p_video_Ebbg.xml
 etc/qdcm_calib_data_ili9881c_HD720p_video_EbbgDJN.xml
 
 # Fingerprint
-bin/gx_fpd
-lib/hw/fingerprint.searchf.so
-lib/libcom_fingerprints_service.so
-lib64/hw/fingerprint.searchf.so
-lib64/hw/fingerprint.fpc.so
-lib64/hw/fingerprint.goodix.so
-lib64/hw/gxfingerprint.default.so
-lib64/libcom_fingerprints_service.so
-lib64/libfp_client.so
-lib64/libfpservice.so
+bin/gx_fpd:vendor/bin/gx_fpd
+lib/hw/fingerprint.searchf.so:vendor/lib/hw/fingerprint.searchf.so
+lib/libcom_fingerprints_service.so:vendor/lib/libcom_fingerprints_service.so
+lib64/hw/fingerprint.searchf.so:vendor/lib64/hw/fingerprint.searchf.so
+lib64/hw/fingerprint.fpc.so:vendor/lib64/hw/fingerprint.fpc.so
+lib64/hw/fingerprint.goodix.so:vendor/lib64/hw/fingerprint.goodix.so
+lib64/hw/gxfingerprint.default.so:vendor/lib64/hw/gxfingerprint.default.so
+lib64/libcom_fingerprints_service.so:vendor/lib64/libcom_fingerprints_service.so
+lib64/libfp_client.so:vendor/lib64/libfp_client.so
+lib64/libfpservice.so:vendor/lib64/libfpservice.so
 
 # Graphics firmware
 etc/firmware/a225p5_pm4.fw:vendor/firmware/a225p5_pm4.fw
