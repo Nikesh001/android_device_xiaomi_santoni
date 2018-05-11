@@ -591,7 +591,7 @@ service config_bt_addr /system/vendor/bin/btnvtool -O
     group bluetooth radio
     oneshot
 
-service hciattach /system//vendor/bin/hci_qcomm_init -e
+service hciattach /system/vendor/bin/hci_qcomm_init -e
     class late_start
     user bluetooth
     group bluetooth net_bt_admin
