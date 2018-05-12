@@ -64,7 +64,7 @@ mkdir /data/vendor/camera 0770 camera camera
 mkdir /data/misc/camera 0770 camera camera
 
 #start camera server as daemon
-service qcamerasvr /system/bin/mm-qcamera-daemon
+service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics

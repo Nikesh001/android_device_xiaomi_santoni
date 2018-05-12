@@ -33,10 +33,10 @@ etc/acdbdata/QRD/msm8952-sku2-snd-card/QRD_SKU2_Headset_cal.acdb:vendor/etc/acdb
 etc/acdbdata/QRD/msm8952-sku2-snd-card/QRD_SKU2_Speaker_cal.acdb:vendor/etc/acdbdata/QRD/msm8952-sku2-snd-card/QRD_SKU2_Speaker_cal.acdb
 
 # Camera
-bin/mm-qcamera-daemon
-lib64/libmm-omxcore.so
-lib64/libmorpho_memory_allocator.so
-lib64/libmorpho_panorama.so
+bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
+lib64/libmm-omxcore.so:vendor/lib64/libmm-omxcore.so
+lib64/libmorpho_memory_allocator.so:vendor/lib64/libmorpho_memory_allocator.so
+lib64/libmorpho_panorama.so:vendor/lib64/libmorpho_panorama.so
 vendor/lib/libChamomilePA.so
 vendor/lib/libchromaflash.so
 vendor/lib/libflash_pmic.so
@@ -324,16 +324,16 @@ vendor/lib/libchromatix_s5k3l8_zsl_preview_ak7345.so
 vendor/lib/libchromatix_s5k3l8_zsl_video_ak7345.so
 
 # Camera configs
-etc/camera/camera_config.xml
-etc/camera/csidtg_camera.xml
-etc/camera/csidtg_chromatix.xml
-etc/camera/ov5675_d5v15b_chromatix.xml
-etc/camera/ov5675_ofilm_chromatix.xml
-etc/camera/s5k3l8_chromatix.xml
-etc/camera/s5k3l8_f3l8yam_chromatix.xml
-etc/camera/s5k3l8_mono_chromatix.xml
-etc/camera/s5k3l8_ofilm_chromatix.xml
-etc/camera/s5k3l8_ofilm_riva_chromatix.xml
+etc/camera/camera_config.xml:vendor/etc/camera/camera_config.xml
+etc/camera/csidtg_camera.xml:vendor/etc/camera/csidtg_camera.xml
+etc/camera/csidtg_chromatix.xml:vendor/etc/camera/csidtg_chromatix.xml
+etc/camera/ov5675_d5v15b_chromatix.xml:vendor/etc/camera/ov5675_d5v15b_chromatix.xml
+etc/camera/ov5675_ofilm_chromatix.xml:vendor/etc/camera/ov5675_ofilm_chromatix.xml
+etc/camera/s5k3l8_chromatix.xml:vendor/etc/camera/s5k3l8_chromatix.xml
+etc/camera/s5k3l8_f3l8yam_chromatix.xml:vendor/etc/camera/s5k3l8_f3l8yam_chromatix.xml
+etc/camera/s5k3l8_mono_chromatix.xml:vendor/etc/camera/s5k3l8_mono_chromatix.xml
+etc/camera/s5k3l8_ofilm_chromatix.xml:vendor/etc/camera/s5k3l8_ofilm_chromatix.xml
+etc/camera/s5k3l8_ofilm_riva_chromatix.xml:vendor/etc/camera/s5k3l8_ofilm_riva_chromatix.xml
 
 # Camera firmware
 etc/firmware/cpp_firmware_v1_10_0.fw:vendor/firmware/cpp_firmware_v1_10_0.fw
