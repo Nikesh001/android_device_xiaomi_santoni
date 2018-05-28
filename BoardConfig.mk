@@ -201,7 +201,7 @@ BLOCK_BASED_OTA := true
 TARGET_PER_MGR_ENABLED := true
 
 # Properties
-TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
+TARGET_VENDOR_PROP := $(DEVICE_PATH)/vendor.prop
 
 # Power
 TARGET_USES_INTERACTION_BOOST := true
