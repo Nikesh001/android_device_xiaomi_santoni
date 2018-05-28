@@ -384,13 +384,13 @@ vendor/lib/libmmcamera_isp_template.so
 vendor/lib/libmmcamera_isp_wb40.so
 
 # Consumer Ir
-lib/hw/consumerir.default.so
-lib64/hw/consumerir.default.so
+lib/hw/consumerir.default.so:vendor/lib/hw/consumerir.default.so
+lib64/hw/consumerir.default.so:vendor/lib64/hw/consumerir.default.so
 
 # Display calibration
-etc/qdcm_calib_data_hx8394F_HD720p_video_BOE.xml
-etc/qdcm_calib_data_ili9881c_HD720p_video_Ebbg.xml
-etc/qdcm_calib_data_ili9881c_HD720p_video_EbbgDJN.xml
+etc/qdcm_calib_data_hx8394F_HD720p_video_BOE.xml:vendor/etc/qdcm_calib_data_hx8394F_HD720p_video_BOE.xml
+etc/qdcm_calib_data_ili9881c_HD720p_video_Ebbg.xml:vendor/etc/qdcm_calib_data_ili9881c_HD720p_video_Ebbg.xml
+etc/qdcm_calib_data_ili9881c_HD720p_video_EbbgDJN.xml:vendor/etc/qdcm_calib_data_ili9881c_HD720p_video_EbbgDJN.xml
 
 # Fingerprint
 bin/gx_fpd:vendor/bin/gx_fpd
